@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/yichengjie/vue_stu/issues"
   },
-  "homepage": "https://github.com/yichengjie/vue_stu#readme"
+  "homepage": "https://github.com/yichengjie/vue_stu#readme",
+  "devDependencies": {
+    "jquery": "^1.12.0"
+  }
 }
