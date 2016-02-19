@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="demo.css">
+
+</head>
+<body>
+    <!-- template for child -->
+    <template id="child-template">
+        <input v-model="msg">
+        <button v-on:click="notify">Dispatch Event</button>
+    </template>
+
+    <div class="container" >
+        <div id="demo">
+            <p>Messages : {{messages | json}}</p>
+            <child></child>
+        </div>
+    </div>
+<script type="text/javascript" src="../bower_components/vue/dist/vue.js"></script>
+<script type="text/javascript" src="dispatch_prop.js"></script>
+</body>
+</html>

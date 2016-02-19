@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="demo.css">
+</head>
+<body>
+    <div class="container" >
+        <div id="demo">
+            <input v-model="parentMsg" type="number">
+            <br>
+            <child v-bind:my-message="parentMsg"></child>
+        </div>
+    </div>
+<script type="text/javascript" src="../bower_components/vue/dist/vue.js"></script>
+<script type="text/javascript" src="dynamic_prop.js"></script>
+</body>
+</html>
