@@ -1,0 +1,12 @@
+body{
+    font-family: 'Fira Mono', Monaco, 'Andale Mono', 'Lucida Console', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace;
+}
+.container{
+    padding-top: 50px;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+[v-cloak]{
+    display: none;
+}
