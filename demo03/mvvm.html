@@ -12,8 +12,15 @@
         <p>
             age:<input type="text" bindKey ="age">
         </p>
+        <p>
+            <button type="button" onclick="submit()">提交表单</button>
+        </p>
+
+
+
     </div>
     <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="custome_mvvm.js"></script>
     <script type="text/javascript">
         var mydata = {
             userName:'windy',
@@ -23,63 +30,12 @@
                 console.info('hello world') ;
             }
         } ;
-        (function (window) {
-            function bindingModel (model,changeCallback){
-                var propertiesMap = {} ;
-                model._private = {} ;
-
-                function getFn(name){
-                    var result = this._private[name] ;
-                    console.info('get value : ' + name + ' = ' + result) ;
-                    return result;
-                };
-                function setFn(name,val){
-                    if(this._private[name]!=val){
-                        console.info("set value : " + name +" = " + val ) ;
-                        this._private[name] =val ;
-                        if(changeCallback){
-                            changeCallback(name,val) ;
-                        }
-                    }
-                };
-                for(var elem in model){
-                    if(model.hasOwnProperty(elem)&&elem!="_private"&& typeof (model[elem])!='function'){
-                        (function (propName,propValue) {
-                            model._private[propName] = propValue ;//init value
-                            propertiesMap[propName] = {
-                                get: function () {
-                                    return getFn.call(this,propName);
-                                },
-                                set: function (v) {
-                                    return setFn.call(this,propName,v)
-                                },
-                                enumerable:true,
-                                configurable:true
-                            } ;
-
-                        })(elem,model[elem]) ;
-                    }
-                }
-                Object.defineProperties(model,propertiesMap) ;
-            }
-            function bindingBoth(model,dom){
-                dom.find("[bindKey]").each(function (item) {
-                    var key = $(this).attr("bindKey") ;
-                    $(this).val(model[key]) ;
-                    $(this).bind("input", function () {
-                        model[key] = $(this).val() ;
-                    }) ;
-                }) ;
-                bindingModel(model, function (name,val) {
-                    var el = dom.find("[bindkey="+name+"]") ;
-                    if(el.val()!=val){
-                        el.val(val) ;
-                    }
-                });
-            }
-            window.bindingBoth = bindingBoth ;
-        })(window) ;
-        bindingBoth(mydata,$("#container"))
+        //将数据与页面html双向绑定
+        bindingBoth(mydata,$("#container")) ;
+        //提交表单按钮被点击
+        function submit(){
+            console.info(JSON.stringify(mydata)) ;
+        }
     </script>
 </body>
 </html>
