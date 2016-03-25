@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <button id="btn1">testBtn</button><br/>
+    <button class="modal-close" data-dismiss="modal" type="button" >
+        <span aria-hidden="true" id="span1">这个按钮点击了不起作用</span>
+    </button>
+
+    <button class="modal-close" data-dismiss="modal" type="button" id="span2">
+        <span aria-hidden="true" >这个按钮点击了起作用</span>
+    </button>
+
+    <span aria-hidden="true" id ="span3">这个按钮点击了起作用</span>
+
+
+<script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#btn1").bind('click', function () {
+            console.info('btn1 is clicked') ;
+        }) ;
+        $("#span1").bind('click', function () {
+            console.info('span1 is clicked') ;
+        }) ;
+        $("#span2").bind('click', function () {
+            console.info('span2 is clicked') ;
+        }) ;
+        $("#span3").bind('click', function () {
+            console.info('span3 is clicked') ;
+        }) ;
+    }) ;
+</script>
+</body>
+</html>
