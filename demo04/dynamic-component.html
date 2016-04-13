@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>dynamic component</title>
+    <link type="text/css" rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .fade-transition {
+            transition: opacity .3s ease;
+        }
+        .fade-enter, .fade-leave {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body style="padding-top: 50px;">
+<!--
+    注意 activate 钩子只作用于动态组件切换
+        或静态组件初始化渲染的过程中，
+        不作用于使用实例方法手工插入的过程中。
+-->
+<div class="container" id ="app">
+    <p>{{name}}</p>
+    <!-- 先淡出再淡入 -->
+    <component :is="currentView"  transition="fade"
+               transition-mode="out-in">
+        <!-- 组件在 vm.currentview 变化时改变 -->
+    </component>
+
+    <p>
+        <input type="radio" v-model ="currentView" value ="home">home
+        <input type="radio" v-model ="currentView" value="posts">posts
+        <input type="radio" v-model ="currentView" value="archive">archive
+    </p>
+
+
+
+</div>
+<script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="../bower_components/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    /**
+     * <pre>
+     *     功能描述:异步加载数据
+     * </pre>
+     * @param options  执行异步函数的参数
+     * @param callBackFn 回调函数
+     */
+    function loadDataAsync(options,callBackFn){
+        var info = options.info ;
+        var data = {name:'yicj','info':info} ;
+        callBackFn.call(this,data) ;
+    }
+
+    new Vue({
+        el:'#app',
+        data:{
+            name:'yicj',
+            currentView: 'posts'
+        },
+        components: {
+            home: {template:'home',activate: function (done) {
+                var self = this ;
+                var options = {info:"home"} ;
+                loadDataAsync(options,function (retData) {
+                    console.info(retData) ;
+                    self.name = 'hello world' ;
+                    done() ;
+                })
+            } },
+            posts: {template:'posts',activate: function (done) {
+                    var self = this ;
+                    var options = {info:"posts"} ;
+                    loadDataAsync(options,function (retData) {
+                        console.info(retData) ;
+                        self.name = 'hello world' ;
+                        done() ;
+                    })
+            } },
+            archive: {template:'archive',activate: function (done) {
+                var self = this ;
+                var options = {info:"archive"} ;
+                loadDataAsync(options,function (retData) {
+                    console.info(retData) ;
+                    self.name = 'hello world' ;
+                    done() ;
+                })
+            } }
+        }
+    }) ;
+</script>
+</body>
+</html>

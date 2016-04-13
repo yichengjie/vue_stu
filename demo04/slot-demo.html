@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>solt demo test</title>
+    <link type="text/css" rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css"/>
+</head>
+<body style="padding-top:50px;">
+    
+    <div id ="example" class="container">
+
+        <!--
+        <my-component>
+            <child-component></child-component>
+        </my-component>-->
+        <my-component2 inline-template>
+            hello world {{name}}
+        </my-component2>
+
+        <p>{{name}}</p>
+
+        <!--
+        <p>These are compiled as the component's own template</p>
+            <p>Not parent's transclusion content.</p>-->
+
+    </div>
+    
+    
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../bower_components/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            Vue.config.debug = true ;
+
+            Vue.component('my-component2', {
+                // 有效，因为是在正确的作用域内
+                template: '<div>' +
+                    '<h1>This is my component!</h1> ' +
+                '</div>',
+                data:{name:'hh'}
+
+            });
+
+            Vue.component('my-component', {
+                // 有效，因为是在正确的作用域内
+                template: '<div>' +
+                              '<h1>This is my component!</h1> ' +
+                              '<slot>This will only be displayed if there is no content to be distributed. </slot> ' +
+                          '</div>'
+            });
+
+            Vue.component('child-component', {
+                // 有效，因为是在正确的作用域内
+                template: '<div v-show="someChildProperty">Child</div>',
+                data: function () {
+                    return {
+                        someChildProperty: true
+                    }
+                }
+            }) ;
+
+
+
+            // 创建根实例
+            new Vue({
+                el: '#example',
+                data:{
+                    name:'yicj'
+                }
+            })
+        }) ;
+    </script>
+</body>
+</html>
