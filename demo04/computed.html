@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>mode page</title>
+    <link type="text/css" rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body style="padding-top: 50px;">
+
+    <div class="container" id ="app">
+        <p>{{name}}</p>
+        <div id="demo">{{fullName}}</div>
+    
+        <p><input type="text" name ="name" v-model ="firstName"></p>
+    </div>
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../bower_components/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+
+        new Vue({
+            el:'#app',
+            data:{
+                name:'yicj',
+                firstName: 'Foo',
+                lastName: 'Bar'
+            },
+            computed: {
+                fullName: function () {
+                  return this.firstName + ' ' + this.lastName
+                }
+            }
+        }) ;
+    </script>
+</body>
+</html>

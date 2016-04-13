@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>params page</title>
+    <link type="text/css" rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body style="padding-top: 50px;">
+
+    <div class="container" id ="app">
+        <p>{{name}}</p>
+        <div v-example v-bind:a="someValue"></div>
+        <p><input type="text" v-model="someValue"></p>
+        <p><input type="text" v-model="obj.name"></p>
+
+        <div v-my-directive="obj"></div>
+
+    </div>
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../bower_components/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+
+
+        Vue.directive('example', {
+          params: ['a'],
+          paramWatchers: {
+            a: function (val, oldVal) {
+                console.log('a changed!' + this.params['a']) ;
+            }
+          }
+        }) ;
+
+        //如果自定义指令用在一个对象上，当对象内部属性变化时要触发 
+        //update，则在指令定义对象中指定 deep: true。
+        Vue.directive('my-directive', {
+          deep: true,
+          update: function (obj) {
+            // 在 `obj` 的嵌套属性变化时调用
+            console.info('obj : ' + JSON.stringify(obj)) ;
+          }
+        }) ;
+
+        new Vue({
+            el:'#app',
+            data:{
+                name:'yicj',
+                someValue:'',
+                obj:{name:'hello'}
+            }
+        }) ;
+    </script>
+</body>
+</html>

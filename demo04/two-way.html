@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>two ways page</title>
+    <link type="text/css" rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body style="padding-top: 50px;">
+    <div class="container" id ="app">
+        <p>{{obj.name | capitalize }}</p>
+        <p><input type="text" v-model="obj.name"></p>
+        <div v-example ="obj.name"></div>
+        <p>{{ obj.name.split('').reverse().join('') }}</p>
+    </div>
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../bower_components/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+
+        Vue.directive('example', {
+          twoWay: true,
+          bind: function () {
+            this.handler = function () {
+              console.info('this.el.value : ' + this.el.value) ;
+              // 将数据写回 vm
+              // 如果指令这样绑定 v-example="a.b.c"
+              // 它将用给定值设置 `vm.a.b.c`
+              this.set(this.el.value) ;
+            }.bind(this) ;
+            this.el.addEventListener('input', this.handler) ;
+          },
+          update:function(value){
+            console.info('update value : ' + value) ;
+          },
+          unbind: function () {
+           // this.el.removeEventListener('input', this.handler) ;
+          }
+        }) ;
+
+        new Vue({
+            el:'#app',
+            data:{
+                name:'yicj',
+                obj:{name:'yicj'}
+            }
+        }) ;
+    </script>
+</body>
+</html>
