@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>测试defineProperty</title>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+    //demo1
+    /*var mathObj = {
+     constants:{},
+     areaOfCircle:function(radius){
+     return this.constants.pi * radius * radius ;
+     }
+     } ;
+
+     Object.defineProperty(mathObj,'pi',{
+     value:3.14,
+     writable:false
+     }) ;
+     mathObj.constants.pi = 'yicj' ;
+     console.info(mathObj.constants.pi) ;*/
+
+    //demo2
+    /*var o = {} ;
+    var myName = "yicj" ;
+    Object.defineProperty(o,"name",{
+        enumerable: true,
+        set: function (name) {
+            console.info('you set name ['+name+'] ') ;
+            myName = name;
+        },
+        get: function () {
+            return myName ;
+        }
+    });
+    console.info(Object.keys(o)) ;
+    o.name = 'hello world';
+    console.info(myName) ;*/
+
+    //demo3
+    /*try{
+        var o = {};
+        Object.defineProperty( o, "attr", {
+            value: "这是利用defindProperty添加的新属性",
+            writable: false,
+            enumerable: true,
+            configurable: true
+        });
+        (function(){
+            var name = "司徒正美";
+            //读写器
+            Object.defineProperty( o, "name", {
+                get: function(){ return name; },
+                set: function(value){ name = value+"!"; }
+            });
+        })();
+        alert( o.attr )
+        // 这是利用defindProperty添加的新属性
+        alert( o.name );  // 司徒正美
+        o.name = "ruby louvre";
+        alert( o.name );  // ruby louvre
+        alert( Object.keys(o))//attr
+        try{
+            o.attr = "试图重写该属性";
+        }catch(ee){
+            alert("与writable: false冲突");
+        }
+        Object.defineProperty( o, "attr", {
+            writable: true,
+            configurable: false
+        });
+        o.attr = "再试尝试重写该属性";
+        alert( o.attr );
+        alert(delete o.attr); //false 与writable: false冲突
+    }catch(e){
+        alert("你的游览器不支持Object.defineProperty ")
+    }*/
+    //demo4
+    var newLine = "<br/>" ;
+    var obj = {} ;
+    Object.defineProperty(obj,'name',{
+        set: function (x) {
+            document.write('in property set accessor ' +newLine  ) ;
+            this.newaccpropvalue  = x ;
+        },
+        get: function () {
+            document.write('in property get accessor ' + newLine) ;
+            return this.newaccpropvalue  ;
+        },
+        enumerable:true,
+        configurable:true
+    }) ;
+
+    obj.name = 30 ;
+    //document.write('Property value : ' + obj.name + newLine) ;
+    var names = Object.getOwnPropertyNames(obj) ;
+    for(var i = 0 ; i < names.length ; i ++){
+        var prop = names[i] ;
+        document.write(prop + " : " + obj[prop] + newLine)
+    }
+
+    var descriptor = Object.getOwnPropertyDescriptor(obj,"name") ;
+
+    console.info(descriptor) ;
+    /*for (var prop in descriptor) {
+        console.info(prop + ': ' + descriptor[prop]) ;
+    }*/
+
+
+
+</script>
+</body>
+</html>

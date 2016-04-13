@@ -18,5 +18,9 @@
   "homepage": "https://github.com/yichengjie/vue_stu#readme",
   "devDependencies": {
     "jquery": "^1.12.0"
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "vue-resource": "^0.7.0"
   }
 }

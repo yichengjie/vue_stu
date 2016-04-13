@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>自己实现的简单的数据双向绑定</title>
+</head>
+<body>
+    <div id ="container">
+        <p>
+            name:<input type="text" bindKey="userName">
+        </p>
+        <p>
+            age:<input type="text" bindKey ="age">
+        </p>
+        <p>
+            <button type="button" onclick="submit()">提交表单</button>
+        </p>
+
+
+
+    </div>
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="custome_mvvm.js"></script>
+    <script type="text/javascript">
+        var mydata = {
+            userName:'windy',
+            age:34,
+            skill:['javascript','html','css','jquery','node'],
+            sayHello: function () {
+                console.info('hello world') ;
+            }
+        } ;
+        //将数据与页面html双向绑定
+        bindingBoth(mydata,$("#container")) ;
+        //提交表单按钮被点击
+        function submit(){
+            console.info(JSON.stringify(mydata)) ;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body style="padding-top: 50px;">
+    <div class="container" id="example">
+        <multi-insertion>
+            <p slot="one">One</p>
+            <p slot="two">Two</p>
+            <p>Default A hello world</p>
+        </multi-insertion>
+    </div>
+
+<script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="../bower_components/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    $(function () {
+        Vue.component("multi-insertion",{
+            template:'<div>'+
+                        '<slot name="one"></slot>' +
+                        '<slot></slot>' +
+                        '<slot name="two"></slot>' +
+                     '</div>'
+        }) ;
+
+        new Vue({
+            el:"#example"
+        }) ;
+
+    }) ;
+</script>
+</body>
+</html>
