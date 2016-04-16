@@ -44,12 +44,13 @@
 		];
 		$.Velocity.RunSequence(mySequence);*/
         //动画序列2 （第二个动画与第一个动画同时执行）
-       /* var mySequence = [
+       /**/
+        var mySequence = [
             { e: $("#div1"), p: { translateX: 100 }, o: { duration: 1000 } },
             { e: $("#div2"), p: { translateX: 200 }, o: { duration: 1000, sequenceQueue: false }},
             { e: $("#div3"), p: { translateX: 300 }, o: { duration: 1000 }}
         ];
-        $.Velocity.RunSequence(mySequence);*/
+        $.Velocity.RunSequence(mySequence);
         //自定义动画
         /*$.Velocity.RegisterEffect(name, {
             defaultDuration: duration,
