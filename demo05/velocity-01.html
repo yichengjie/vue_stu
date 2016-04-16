@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../bower_components/normalize-css/normalize.css">
+    <style type="text/css" media="screen">
+    	#div1{
+    		width:100px;
+    		height:100px;
+    		background:red;
+    	}
+    	#div2{
+    		width:100px;
+    		height:100px;
+    		background:blue;
+    	}	
+    	#div3{
+    		width:100px;
+    		height:100px;
+    		background:yellow;
+    	}		
+    </style>
+</head>
+<body>
+	<div id ="div1"></div>
+	<div id ="div2"></div>
+	<div id ="div3"></div>
+<script src="../bower_components/jquery/dist/jquery.js" type="text/javascript" ></script>
+<script src="../bower_components/velocity/velocity.js" type="text/javascript" ></script>
+<script src="../bower_components/velocity/velocity.ui.js" type="text/javascript" ></script>
+<script type="text/javascript" charset="utf-8" >
+	(function($){
+		/*$("#div1").velocity({
+			width:"500px"
+		},{
+			duration:1000
+		}) ;*/
+		//定义一个动画queues 1
+		/*var mySequence = [
+		    { e: $("#div1"), p: { translateX: 100 }, o: { duration: 1000 } },
+		    { e: $("#div2"), p: { translateX: 200 }, o: { duration: 1000 } },
+		    { e: $("#div3"), p: { translateX: 300 }, o: { duration: 1000 } }
+		];
+		$.Velocity.RunSequence(mySequence);*/
+        //动画序列2 （第二个动画与第一个动画同时执行）
+       /* var mySequence = [
+            { e: $("#div1"), p: { translateX: 100 }, o: { duration: 1000 } },
+            { e: $("#div2"), p: { translateX: 200 }, o: { duration: 1000, sequenceQueue: false }},
+            { e: $("#div3"), p: { translateX: 300 }, o: { duration: 1000 }}
+        ];
+        $.Velocity.RunSequence(mySequence);*/
+        //自定义动画
+        /*$.Velocity.RegisterEffect(name, {
+            defaultDuration: duration,
+            calls: [
+                [ { property: value }, durationPercentage, { options } ],
+                [ { property: value }, durationPercentage, { options } ]
+            ],
+            reset: { property: value, property: value }
+        });*/
+        //example 1
+        /*$.Velocity.RegisterEffect("callout.pulse", {
+            defaultDuration: 900,
+            calls: [
+                [ { scaleX: 1.1 }, 0.50 ],
+                [ { scaleX: 1 }, 0.50 ]
+            ]
+        });
+
+        $("#div1").velocity("callout.pulse");*/
+
+        //example 2
+        /* Registration */
+        /*$.Velocity
+        .RegisterEffect("transition.flipXIn", {
+            defaultDuration: 700,
+            calls: [
+                [ { opacity: 1, rotateY: [ 0, -55 ] } ]
+            ]
+        })
+        .RegisterEffect("transition.flipXOut", {
+            defaultDuration: 700,
+            calls: [
+                [ { opacity: 0, rotateY: 55 } ]
+            ],
+            reset: { rotateY: 0 }
+        });
+        $("#div1")
+        .velocity("transition.flipXIn")
+        .velocity("transition.flipXOut", { delay: 1000 });*/
+
+        
+
+	})(jQuery) ;
+</script>
+</body>
+</html>
