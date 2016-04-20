@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>mode page</title>
+    <link type="text/css" rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body style="padding-top: 50px;">
+
+<div class="container" id ="app">
+    <p>{{name}}</p>
+
+     <my-component></my-component>
+</div>
+<script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="../bower_components/vue/dist/vue.js"></script>
+<script type="text/javascript">
+
+    var MyComponent = Vue.extend({
+        template:'<div> hello {{info}}</div>',
+        data:{
+            info:'test'
+        }
+    }) ;
+
+    Vue.component('my-component',MyComponent) ;
+
+    new Vue({
+        el:'#app',
+        data:{
+            name:'yicj',
+            info:'test2'
+        }
+    }) ;
+</script>
+</body>
+</html>
