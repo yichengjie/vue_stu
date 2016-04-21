@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="../demo.css">
+    <link type="text/css" rel="stylesheet" href="../bower_components/iconfont/iconfont.css">
+    <style type="text/css">
+        body{
+            font-size: 12px;
+            font-family:"微软雅黑"
+        }
+        .btn-oc{
+            height: 28px;
+            line-height: 28px;
+            box-sizing: border-box;
+            background-color: #E9E9E9;
+            display: inline-block;
+            cursor: pointer;
+            padding: 0 8px;
+            border-radius: 2px;
+        }
+        .dropdown-oc{
+            position: relative;
+            display: inline-block;
+        }
+        ul.dropdown-menu-oc{
+            position: absolute;
+            box-sizing:border-box;
+            background-color:#E9E9E9;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            top: 30px;
+            left: 0;
+            z-index: 10;
+            display: none;
+            border-left: 1px solid #BEBEBE;
+            border-right: 1px solid #BEBEBE ;
+            border-bottom: 1px solid #BEBEBE ;
+            border-radius: 2px;
+
+        }
+        ul.dropdown-menu-oc> li{
+            padding: 0 14px;
+            margin: 0;
+            height: 30px;
+            line-height: 30px;
+            cursor: pointer;
+            list-style: none;
+        }
+        ul.dropdown-menu-oc> li:hover{
+            background-color: #808080;
+            color: #FFF;
+        }
+        ul.dropdown-menu-oc.open{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class ="dropdown-oc">
+            <div class="btn-oc" id="showHideBaseCfgBtn">基础信息配置&nbsp;<i class ="icon iconfont icon-xiasanjiao-copy"></i></div>
+            <ul  id ="showHideBaseCfgMenu" class ="dropdown-menu-oc" >
+                <li>数据源配置</li>
+                <li>里程积分兑换</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#showHideBaseCfgBtn").bind("click",function(e){
+                console.info('1111111111111') ;
+                e.stopPropagation() ;
+                $("#showHideBaseCfgMenu").toggleClass("open") ;
+            }) ;
+            $(document).on('click', function(){
+                $('#showHideBaseCfgMenu').removeClass('open');
+            });
+        }) ;
+    </script>
+</body>
+</html>
