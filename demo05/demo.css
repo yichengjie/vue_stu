@@ -1,0 +1,7 @@
+.triangle{
+    width: 0px;
+    height: 0px;
+    background-color: red;
+    border: 50px solid;
+    border-color: #ff0000 #00ff00 #0000ff rgb(250,0,255);
+}
