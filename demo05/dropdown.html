@@ -5,7 +5,8 @@
     <title></title>
     <link type="text/css" rel="stylesheet" href="../demo.css">
     <link type="text/css" rel="stylesheet" href="../bower_components/iconfont/iconfont.css">
-    <link type="text/css" rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+
     <style type="text/css">
         body{
             font-size: 12px;
@@ -68,6 +69,23 @@
 
     <div class="container">
 
+        <div class="modal fade" id ="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">批量导入操作</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>文件&nbsp;:&nbsp;<span id ="batchImportFileName"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id ="submitBatchImportFormBtn">导入</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
 
         <div class ="dropdown-oc">
@@ -78,20 +96,24 @@
             </ul>
         </div>
 
-
         <div class ="dropdown-oc">
-            <span class="btn-oc" >批量导入</span>
+            <label class="btn-oc" for="batchImportFileInput" >批量导入</label>
             <span style="float: right" class="btn-oc" id ="showHideBaseCfgBtn2"><i class="icon iconfont icon-xiasanjiao-copy" aria-hidden="true"></i></span>
             <ul  id ="showHideBaseCfgMenu2" class ="dropdown-menu-oc" >
                 <li>下载模板</li>
             </ul>
         </div>
 
+            <form method="post" action ="hello.action" enctype="multipart/form-data" id ="batchImportForm" >
+                <input type="file" id ="batchImportFileInput" style="display: none" onchange="importFileChange()">
+            </form>
+
 
     </div>
 
-
     <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
     <script type="text/javascript">
         $(function () {
             $("#showHideBaseCfgBtn").bind("click",function(e){
@@ -108,7 +130,19 @@
                 $('#showHideBaseCfgMenu').removeClass('open');
                 $('#showHideBaseCfgMenu2').removeClass('open');
             });
+
+            $("#submitBatchImportFormBtn").on('click',function(){
+                $("#batchImportForm").submit() ;
+            }) ;
+
         }) ;
+
+        function importFileChange(){
+            var fileName = $("#batchImportFileInput").val() ;
+            $("#batchImportFileName").html(fileName) ;
+            $("#myModal").modal("show") ;
+        }
     </script>
+
 </body>
 </html>
