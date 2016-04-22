@@ -5,6 +5,7 @@
     <title></title>
     <link type="text/css" rel="stylesheet" href="../demo.css">
     <link type="text/css" rel="stylesheet" href="../bower_components/iconfont/iconfont.css">
+    <link type="text/css" rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css">
     <style type="text/css">
         body{
             font-size: 12px;
@@ -19,6 +20,7 @@
             cursor: pointer;
             padding: 0 8px;
             border-radius: 2px;
+            border: 1px solid #CCC;
         }
         .dropdown-oc{
             position: relative;
@@ -39,7 +41,10 @@
             border-right: 1px solid #BEBEBE ;
             border-bottom: 1px solid #BEBEBE ;
             border-radius: 2px;
-
+            box-shadow: 2px 2px 5px #888888;
+            -moz-box-shadow: 2px 2px 5px #888888;
+            -webkit-box-shadow: 2px 2px 5px #888888;
+            -o-box-shadow: 2px 2px 5px #888888;
         }
         ul.dropdown-menu-oc> li{
             padding: 0 14px;
@@ -56,11 +61,15 @@
         ul.dropdown-menu-oc.open{
             display: block;
         }
+
     </style>
 </head>
 <body>
 
     <div class="container">
+
+
+
         <div class ="dropdown-oc">
             <div class="btn-oc" id="showHideBaseCfgBtn">基础信息配置&nbsp;<i class ="icon iconfont icon-xiasanjiao-copy"></i></div>
             <ul  id ="showHideBaseCfgMenu" class ="dropdown-menu-oc" >
@@ -68,6 +77,17 @@
                 <li>里程积分兑换</li>
             </ul>
         </div>
+
+
+        <div class ="dropdown-oc">
+            <span class="btn-oc" >批量导入</span>
+            <span style="float: right" class="btn-oc" id ="showHideBaseCfgBtn2"><i class="icon iconfont icon-xiasanjiao-copy" aria-hidden="true"></i></span>
+            <ul  id ="showHideBaseCfgMenu2" class ="dropdown-menu-oc" >
+                <li>下载模板</li>
+            </ul>
+        </div>
+
+
     </div>
 
 
@@ -75,12 +95,18 @@
     <script type="text/javascript">
         $(function () {
             $("#showHideBaseCfgBtn").bind("click",function(e){
-                console.info('1111111111111') ;
                 e.stopPropagation() ;
                 $("#showHideBaseCfgMenu").toggleClass("open") ;
             }) ;
+
+            $("#showHideBaseCfgBtn2").bind("click",function(e){
+                e.stopPropagation() ;
+                $("#showHideBaseCfgMenu2").toggleClass("open") ;
+            }) ;
+
             $(document).on('click', function(){
                 $('#showHideBaseCfgMenu').removeClass('open');
+                $('#showHideBaseCfgMenu2').removeClass('open');
             });
         }) ;
     </script>
