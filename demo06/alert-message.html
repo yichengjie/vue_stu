@@ -9,7 +9,7 @@
 <div class="container" ng-controller="IndexController">
     <div alert-bar="" alertmessage ="errorService.errorMessage"></div>
     <h2>{{data.name}}</h2>
-
+    <h1>--> {{errorService.errorMessage}}</h1>
     <input type="text" ng-model="data.name">
     <br>
     <button ng-click="hello()" class="btn btn-primary">hello world</button>
