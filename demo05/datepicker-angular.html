@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link type="text/css" rel="stylesheet" href="../bower_components/datepicker/dist/datepicker.css" />
+</head>
+<body style="padding-top: 50px" ng-app="app">
+    <div class="container" ng-controller="IndexController">
+        <input data-toggle="datepicker" ng-model="$parent.data.date" datepicker ="" select="updateMyText(date)" />
+        <br/>
+        {{myText}}
+        <br/>
+        <p><button class="btn btn-primary" ng-click="submit()">button</button></p>
+    </div>
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../bower_components/datepicker/dist/datepicker.js"></script>
+    <script type="text/javascript" src="../bower_components/datepicker/i18n/datepicker.zh-CN.js"></script>
+    <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="./datepicker-angular.js"></script>
+</body>
+</html>
