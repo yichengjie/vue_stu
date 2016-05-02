@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angular alert message demo</title>
+    <link type="text/css" rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body style="padding-top: 50px;" ng-app="app">
+<div class="container" ng-controller="IndexController">
+    <div alert-bar="" alertmessage ="errorService.errorMessage"></div>
+    <h2>{{data.name}}</h2>
+
+    <input type="text" ng-model="data.name">
+    <br>
+    <button ng-click="hello()" class="btn btn-primary">hello world</button>
+
+</div>
+<script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="alert-message.js"></script>
+</body>
+</html>
