@@ -89,8 +89,8 @@
 
 
         <div class ="dropdown-oc">
-            <div class="btn-oc" id="showHideBaseCfgBtn">基础信息配置&nbsp;<i class ="icon iconfont icon-xiasanjiao-copy"></i></div>
-            <ul  id ="showHideBaseCfgMenu" class ="dropdown-menu-oc" >
+            <div class="btn-oc dropdown-trigger">基础信息配置&nbsp;<i class ="icon iconfont icon-xiasanjiao-copy"></i></div>
+            <ul class ="dropdown-menu-oc" >
                 <li>数据源配置</li>
                 <li>里程积分兑换</li>
             </ul>
@@ -98,15 +98,15 @@
 
         <div class ="dropdown-oc">
             <label class="btn-oc" for="batchImportFileInput" >批量导入</label>
-            <span style="float: right" class="btn-oc" id ="showHideBaseCfgBtn2"><i class="icon iconfont icon-xiasanjiao-copy" aria-hidden="true"></i></span>
-            <ul  id ="showHideBaseCfgMenu2" class ="dropdown-menu-oc" >
+            <span style="float: right" class="btn-oc dropdown-trigger" ><i class="icon iconfont icon-xiasanjiao-copy" aria-hidden="true"></i></span>
+            <ul  class ="dropdown-menu-oc" >
                 <li>下载模板</li>
             </ul>
         </div>
 
-            <form method="post" action ="hello.action" enctype="multipart/form-data" id ="batchImportForm" >
-                <input type="file" id ="batchImportFileInput" style="display: none" onchange="importFileChange()">
-            </form>
+        <form method="post" action ="hello.action" enctype="multipart/form-data" id ="batchImportForm" >
+            <input type="file" id ="batchImportFileInput" style="display: none" onchange="importFileChange()">
+        </form>
 
 
     </div>
@@ -116,27 +116,20 @@
 
     <script type="text/javascript">
         $(function () {
-            $("#showHideBaseCfgBtn").bind("click",function(e){
+            $(".dropdown-oc").find(".dropdown-trigger").click(function (e) {
                 e.stopPropagation() ;
-                $("#showHideBaseCfgMenu").toggleClass("open") ;
+                $(".dropdown-menu-oc").removeClass('open') ;
+                $(this).parent(".dropdown-oc").find(".dropdown-menu-oc").toggleClass('open') ;
             }) ;
 
-            $("#showHideBaseCfgBtn2").bind("click",function(e){
-                e.stopPropagation() ;
-                $("#showHideBaseCfgMenu2").toggleClass("open") ;
+            $(document).click(function(){
+                $('.dropdown-menu-oc').removeClass('open') ;
             }) ;
-
-            $(document).on('click', function(){
-                $('#showHideBaseCfgMenu').removeClass('open');
-                $('#showHideBaseCfgMenu2').removeClass('open');
-            });
 
             $("#submitBatchImportFormBtn").on('click',function(){
                 $("#batchImportForm").submit() ;
             }) ;
-
         }) ;
-
         function importFileChange(){
             var fileName = $("#batchImportFileInput").val() ;
             $("#batchImportFileName").html(fileName) ;

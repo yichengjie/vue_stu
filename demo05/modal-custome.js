@@ -243,7 +243,7 @@
    */
   Modal.prototype.adjustDialog = function () {
     var modalIsOverflowing = this.$element[0].scrollHeight > document.documentElement.clientHeight
-    var clientHeight = $(document).height() ;
+    var clientHeight = $(window).height() ;
     var height = this.$dialog.height() ;
     var top = (clientHeight -height)/2 -20 ;
     this.$element.css({
