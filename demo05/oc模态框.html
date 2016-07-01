@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css"/>
+    <style type="text/css">
+        /**模态框相关 start **/
+        .fade_2{display: none;}
+        .modal_2{
+            display: none;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1050;
+            -webkit-overflow-scrolling: touch;
+            outline: 0;
+        }
+        .modal-mask_2{position: fixed;width: 100%;height: 100%;top: 0;left: 0;background: rgba(0,0,0,.3);z-index:1;}
+        .modal-dialog_2{position: fixed;width: 400px;min-height: 150px;top: 0;left: 0;z-index:2;}
+        .modal-content_2{border-radius: 5px;background-color: #fff;border: 1px solid rgba(0,0,0,.2);outline: 0;box-sizing: border-box;
+            -moz-box-sizing:border-box; -webkit-box-sizing:border-box;box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);}
+        .modal-header_2{box-sizing: border-box;-moz-box-sizing:border-box; -webkit-box-sizing:border-box;border-bottom: 1px solid #e5e5e5;min-height: 16.43px;padding: 15px;}
+        .modal-title_2{line-height: 1.42857;margin: 0;}
+        .modal-title_2{font-size: 18px;}
+        .modal-header_2 .modal-close_2 {margin-top: -2px;}
+        .modal-close_2 {background: rgba(0, 0, 0, 0) none repeat scroll 0 0;border: 0 none;cursor: pointer;padding: 0;
+            color: #000;float: right;font-size: 21px;font-weight: 700; line-height: 1;opacity: 0.2;text-shadow: 0 1px 0 #fff;}
+        .modal-body_2 {box-sizing: border-box;-moz-box-sizing:border-box;  -webkit-box-sizing:border-box; padding: 15px; position: relative;}
+        .modal-footer_2 {box-sizing: border-box;-moz-box-sizing:border-box; -webkit-box-sizing:border-box; border-top: 1px solid #e5e5e5;padding: 15px;text-align: right;}
+        .modal-body_2 .input_title_2{display: inline-block;width:90px;}
+        .modal-body_2 .input_content_2{display: inline-block;width:157px;}
+        .modal-body_2 .modal_input_2{display: inline-block;higth:25px;width:140px;}
+        .modal-body_2 .row{width:100%;line-height: 25px;}
+        .modal-errorTip{color:red;}
+        .modal-successTip{color:green;}
+        /**模态框相关 end **/
+        /**button相关样式start**/
+        .btn {-moz-user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;cursor: pointer;display: inline-block;font-size: 14px;
+            font-weight: 400;line-height: 1.42857; margin-bottom: 0;padding: 6px 12px;text-align: center;vertical-align: middle;white-space: nowrap;}
+        .btn-default {background-color: #fff;border-color: #ccc;color: #333;}
+        .btn-primary {background-color: #337ab7;border-color: #2e6da4;color: #fff;}
+        .btn.focus,.btn:focus,.btn:hover{color: #333;text-decoration: none;}
+        .btn-default:hover{ background-color: #e6e6e6;border-color: #adadad;color: #333;}
+        /**button相关样式end**/
+    </style>
+</head>
+<body>
+
+    <!-- 批量截止【 模态框 】start-->
+    <div class="fade_2 modal_2" id="abortModal">
+        <div class="modal-mask_2"></div>
+        <div class="modal-dialog_2"  >
+            <div class="modal-content_2">
+                <div class="modal-header_2">
+                    <button class="modal-close_2" data-dismiss="modal" type="button" id="abortModalClose">
+                        <span aria-hidden="true" >×</span>
+                    </button>
+                    <h4 class="modal-title_2">批量截止操作</h4>
+                </div>
+                <div class="modal-body_2">
+                    <div class ="row">
+                        <label class="input_title_2">截止日期</label>
+                        <div class="input_content_2">
+                            <input type="text" class="modal_input_2 input_normal" tabindex="3"  id="lastMaintenanceDate"  name="lastMaintenanceDate"  readonly="readonly"/>
+                            <label class="datebox icon iconfont icon-riqi"  for="lastMaintenanceDate"></label>
+                        </div>
+                    </div>
+                    <br />
+                    <div class ="row">
+                        <ul id ="abortTipInfo"></ul>
+                    </div>
+                </div>
+                <div class="modal-footer_2">
+                    <button class="btn btn-default" data-dismiss="modal" type="button" id ="abortModalCancel">取消</button>
+                    <button class="btn btn-primary"  type="button" id ="abortModalConfirm" url ="${pageContext.request.contextPath}/s7/batchObortR7">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 批量截止【 模态框 】end-->
+
+
+    <button id ="toggleModalBtn" class="btn btn-primary">Toggle Modal Btn</button>
+
+
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        (function($){
+            function S7Abort(){
+
+            } ;
+            //初始化函数
+            S7Abort.prototype.init = function () {
+                console.info('init method is called ....') ;
+                $("#toggleModalBtn").click(function (e) {
+                    $("#abortModal").removeClass('fade_2') ;
+                }) ;
+            };
+            new S7Abort().init() ;
+        })(jQuery) ;
+    </script>
+</body>
+</html>
