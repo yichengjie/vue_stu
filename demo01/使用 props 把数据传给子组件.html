@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="demo.css"/>
+</head>
+<body>
+<div id="app">
+    <child :msg="parentMsg"></child>
+    <br/>
+    <input type="text" v-model="parentMsg"/>
+</div>
+
+<script type="text/javascript" src="../bower_components/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    Vue.component('child', {
+        // 声明 props
+        props: ['msg'],
+        // prop 可以用在模板内
+        // 可以用 `this.msg` 设置
+        template: '<span>{{ msg }}</span><br/><input type="text" v-model="msg"/>'
+    })
+    new Vue({
+        el:'#app',
+        data:{
+            parentMsg:'hello world'
+        },
+        ready:function(){
+           var _self = this ;
+            setTimeout(function(){
+               _self.parentMsg = 'yicj test' ;
+            },3000)
+        }
+    })
+</script>
+</body>
+</html>
