@@ -14,12 +14,12 @@
 
         function getFn(name){
             var result = this._private[name] ;
-            console.info('get value : ' + name + ' = ' + result) ;
+            //console.info('get value : ' + name + ' = ' + result) ;
             return result;
         };
         function setFn(name,val){
             if(this._private[name]!=val){
-                console.info("set value : " + name +" = " + val ) ;
+                //console.info("set value : " + name +" = " + val ) ;
                 this._private[name] =val ;
                 if(changeCallback){
                     changeCallback(name,val) ;
