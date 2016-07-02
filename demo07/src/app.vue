@@ -12,17 +12,17 @@ div
     import CompB from './components/b.vue'
     import Counter from './components/counter.vue'
     export default {
-            data () {
-                return {
-                    msg: 'Hello from vue-loader!'
-                }
+        data () {
+            return {
+                msg: 'Hello from vue-loader!'
+            }
         },
         components: {
             CompA,
             CompB,
             Counter
+            }
         }
-    }
 </script>
 
 <style lang="stylus">
@@ -31,7 +31,7 @@ primary-color = #999
 body
     font 100% font-stack
     color primary-color
-.logo
-    width 40px
-    height 40px
+   .logo
+          width 40px
+                  height 40px
 </style>
