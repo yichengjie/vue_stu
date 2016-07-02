@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body id="app">
+
+    <example></example>
+
+<script type="text/javascript" src="../bower_components/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    Vue.component('example', {
+        template: '<span v-on:click="updateMessage" style="cursor: pointer;">{{msg}}</span>',
+        data: function () {
+            return {
+                msg: 'not updated'
+            }
+        },
+        methods: {
+            updateMessage: function () {
+                this.msg = 'updated'
+                console.log(this.$el.textContent) // => 'not updated'
+                this.$nextTick(function () {
+                    console.log(this.$el.textContent) // => 'updated'
+                })
+            }
+        }
+    })
+    new Vue({
+        el:'#app'
+    }) ;
+</script>
+</body>
+</html>
